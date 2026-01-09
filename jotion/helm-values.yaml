@@ -46,6 +46,24 @@ resources:
   limits:
     memory: 128Mi
 
+livenessProbe:
+  httpGet:
+    path: /home
+    port: 3000
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 1
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /home
+    port: 3000
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 1
+  failureThreshold: 3
+
 env:
   - name: NODE_ENV
     value: production
